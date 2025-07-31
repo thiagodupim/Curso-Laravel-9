@@ -3,54 +3,31 @@
 @section('title', 'Essa é a página HOME')
 
 @section('conteudo')
-    {{-- Isso é um comentário --}}
 
-    {{-- Operador ternário --}}
-    {{-- isset($nome) ? 'existe' : 'não existe' --}}
+    {{-- Estruturas de repetição --}}
+    @for ($i = 0; $i <= 10; $i++)
+        O valor atual é {{ $i }} <br>
+    @endfor
 
-    {{-- Definindo valor padrão para uma variável --}}
-    {{ $teste ?? 'padrão'}}
+    <br>
 
-    {{-- Estruturas de controle --}}
+    @php $j = 0; @endphp
 
-    @if ($nome == 'Thiago')
-        true
-    @else 
-        false
-    @endif
+    @while ($j <= 15)
+        O valor atual com o while é {{ $j }} <br>
+        @php $j++ @endphp
+    @endwhile
 
-    {{-- Inverso do if --}}
-    @unless ($nome == 'Thiago')
-        true
-    @else
-        false
-    @endunless
+    <br>
 
-    @switch($idade)
-        @case(25)
-            idade está ok
-            @break
-        @case(28)
-            idade está errada
-            @break
-        @default
-            default
-    @endswitch
+    @foreach ($frutas as $fruta)
+        {{ $fruta }} <br>
+    @endforeach
 
-    @isset($nome)
-        existe
-    @endisset
-
-    @empty($nome)
-        está vazia
-    @endempty
-
-    @auth 
-        está autenticado
-    @endauth
-
-    {{-- Inverso do auth --}}
-    @guest
-        Não está autenticado
-    @endguest
+    {{-- Caso o array esteja vázio e vamos trabalhar com um valor padrão usamos forelse --}}
+    @forelse($frutas as $fruta)
+        {{ $fruta }} <br>
+    @empty
+        array está vázio
+    @endforelse
 @endsection

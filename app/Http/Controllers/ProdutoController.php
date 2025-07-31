@@ -21,13 +21,13 @@ class ProdutoController extends Controller
         
         $nome = "Thiago";
         $idade = 25;
+        $frutas = ['banana', 'laranja', 'maçã'];
         $html = "<h1> Olá eu sou H1 </h1>";
-
 
         // return view('site.empresa', ['nome' => $nome, 'idade' => $idade, 'html' => $html]);
 
         // Também podemos fazer deste forma
-        return view('site.home', compact('nome', 'idade', 'html'));
+        return view('site.home', compact('nome', 'idade', 'html', 'frutas'));
     }
 
     /**
