@@ -27,7 +27,7 @@ class ProdutoController extends Controller
         // return view('site.empresa', ['nome' => $nome, 'idade' => $idade, 'html' => $html]);
 
         // Também podemos fazer deste forma
-        return view('site.empresa', compact('nome', 'idade', 'html'));
+        return view('site.home', compact('nome', 'idade', 'html'));
     }
 
     /**
