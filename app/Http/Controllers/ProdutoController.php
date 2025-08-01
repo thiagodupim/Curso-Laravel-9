@@ -16,18 +16,9 @@ class ProdutoController extends Controller
     {
         // return "index";
 
-        // $produtos = Produto::all();
-        // return dd($produtos);
-        
-        $nome = "Thiago";
-        $idade = 25;
-        $frutas = ['banana', 'laranja', 'maçã'];
-        $html = "<h1> Olá eu sou H1 </h1>";
+        $produtos = Produto::all();
 
-        // return view('site.empresa', ['nome' => $nome, 'idade' => $idade, 'html' => $html]);
-
-        // Também podemos fazer deste forma
-        return view('site.home', compact('nome', 'idade', 'html', 'frutas'));
+        return view('site.home', compact('produtos'));
     }
 
     /**
