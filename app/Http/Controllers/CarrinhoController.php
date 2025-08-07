@@ -18,7 +18,7 @@ class CarrinhoController extends Controller
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'quantity' => $request->qnt,
+            'quantity' => abs($request->qnt),
             'attributes' => array(
                 'image' => $request->img
             )
@@ -38,7 +38,7 @@ class CarrinhoController extends Controller
         \Cart::update($request->id, [
             'quantity' => [
                 'relative' => false, // Como queremos substituir colocamos o relative => false
-                'value' => $request->quantity,
+                'value' => abs($request->quantity), // usamos a função abs() para converter para valor absoluto. Desta forma não conseguimos usar valores negativos 
             ],
         ]);
 
