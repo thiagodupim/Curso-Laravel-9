@@ -35,7 +35,12 @@
                         <td><input style="width: 40px; font-weight:900;" class="white center" type="number" name="quantity" value="{{ $item->quantity }}"></td>
                         <td>
                             <button class="btn-floating waves-effect waves-light orange"><i class="material-icons">refresh</i></button>
-                            <button class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></button>
+
+                            <form action="{{ route('site.removecarrinho') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <button class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach    
