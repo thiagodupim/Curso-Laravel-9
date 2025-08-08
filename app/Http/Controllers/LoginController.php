@@ -9,9 +9,13 @@ class LoginController extends Controller
 {
     public function auth(Request $request) 
     {
-        $credenciais = $request->validade([
+        $credenciais = $request->validate([
             'email' => ['required', 'email'], // Além do campo ser obrigatório o e-mail também tem que ser válido
             'password' => ['required'],
+        ], [
+            'email.required' => 'O campo email é obrigatório!',
+            'email.email' => 'O email não é válido',
+            'password.required' => 'O campo senha é obrigatório!',
         ]);
 
         /* attempt vai pegar as credenciais e verificar se existe usuários com essas credenciais no banco
