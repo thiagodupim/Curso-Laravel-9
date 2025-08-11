@@ -22,7 +22,7 @@ class LoginController extends Controller
            Se houver a sessão vai ser criada, se não houver não será criada */
         if (Auth::attempt($credenciais)) {
             $request->session()->regenerate(); //Gera um novo id para sessão
-            return redirect()->intended('dashboard'); // Faz o redirecionamento verificando se o usuário veio de algum lugar 
+            return redirect()->intended('/admin/dashboard'); // Faz o redirecionamento verificando se o usuário veio de algum lugar 
         } else{
             return redirect()->back()->with('erro', 'Usuário ou senha inválida.');
         }
