@@ -20,7 +20,7 @@ class LoginController extends Controller
 
         /* attempt vai pegar as credenciais e verificar se existe usuários com essas credenciais no banco
            Se houver a sessão vai ser criada, se não houver não será criada */
-        if (Auth::attempt($credenciais)) {
+        if (Auth::attempt($credenciais, $request->remember)) {
             $request->session()->regenerate(); //Gera um novo id para sessão
             return redirect()->intended('/admin/dashboard'); // Faz o redirecionamento verificando se o usuário veio de algum lugar 
         } else{
