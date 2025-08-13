@@ -7,6 +7,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
+use function PHPUnit\Framework\returnSelf;
+
 class SiteController extends Controller
 {
     public function index()
@@ -24,7 +26,28 @@ class SiteController extends Controller
         $produto = Produto::where('slug', $slug)->first();
 
         // Gate::authorize('ver-produto', $produto);
-        $this->authorize('verProduto', $produto);
+        // $this->authorize('verProduto', $produto);
+
+        
+        /*
+        // Permite
+        if (Gate::allows('ver-produto', $produto)) {
+            return view('site.details', compact('produto'));
+        } */
+
+        /*
+        // Nega
+        if (Gate::denies('ver-produto', $produto)) {
+            return redirect()->route('site.index');
+        } */
+
+        if (auth()->user->can('verProduto', $produto)) {
+            return view('site.details', compact('produto'));
+        }
+
+        if (auth()->user->can('ver-produto', $produto)) {
+            return redirect()->route('site.index');
+        }
 
         return view('site.details', compact('produto'));
     }
