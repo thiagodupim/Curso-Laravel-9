@@ -23,7 +23,8 @@ class SiteController extends Controller
         // Usar o método first pois precisamos apenas de um produto em especifico
         $produto = Produto::where('slug', $slug)->first();
 
-        Gate::authorize('ver-produto', $produto);
+        // Gate::authorize('ver-produto', $produto);
+        $this->authorize('verProduto', $produto);
 
         return view('site.details', compact('produto'));
     }
