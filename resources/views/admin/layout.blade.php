@@ -20,5 +20,6 @@
         <!-- Quando precisar incorporar um arquivo externo que esteja dentro da pasta public basta utilizar o asset() -->
         <script src="{{ asset('js/chart.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
+        @stack('graficos')
   </body>
 </html>
