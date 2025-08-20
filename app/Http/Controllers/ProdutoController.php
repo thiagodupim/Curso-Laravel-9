@@ -16,9 +16,9 @@ class ProdutoController extends Controller
     {
         // return "index";
 
-        $produtos = Produto::paginate(3);
+        $produtos = Produto::all();
 
-        return view('site.home', compact('produtos'));
+        return view('admin.produtos', compact('produtos'));
     }
 
     /**
