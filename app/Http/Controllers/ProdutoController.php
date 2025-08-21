@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 
@@ -17,8 +18,9 @@ class ProdutoController extends Controller
         // return "index";
 
         $produtos = Produto::paginate(5);
+        $categorias = Categoria::all();
 
-        return view('admin.produtos', compact('produtos'));
+        return view('admin.produtos', compact('produtos', 'categorias'));
     }
 
     /**
