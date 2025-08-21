@@ -87,6 +87,6 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         $produto->delete();
 
-        return redirect()->route('admin.produtos');
+        return redirect()->route('admin.produtos')->with('sucesso', 'Produto removido com sucesso!');
     }
 }
